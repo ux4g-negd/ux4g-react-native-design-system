@@ -4,3 +4,5 @@ export * from './CheckboxShowcase';
 export * from './RadioButtonShowcase';
 export * from './DividerShowcase';
 export * from './SwitchShowcase';
+export * from './TagShowcase';
+export * from './BadgeShowcase';

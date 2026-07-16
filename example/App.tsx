@@ -10,6 +10,7 @@ import {
   Text,
   Pressable,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 import { ButtonShowcase } from '../src/showcase/ButtonShowcase';
 import { SpinnerShowcase } from '../src/showcase/SpinnerShowcase';
@@ -17,12 +18,22 @@ import { CheckboxShowcase } from '../src/showcase/CheckboxShowcase';
 import { RadioButtonShowcase } from '../src/showcase/RadioButtonShowcase';
 import { DividerShowcase } from '../src/showcase/DividerShowcase';
 import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
+import { TagShowcase } from '../src/showcase/TagShowcase';
+import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
-type ActiveTab = 'spinners' | 'buttons' | 'checkboxes' | 'radios' | 'dividers' | 'switches';
+type ActiveTab =
+  | 'spinners'
+  | 'buttons'
+  | 'checkboxes'
+  | 'radios'
+  | 'dividers'
+  | 'switches'
+  | 'tags'
+  | 'badges';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('switches');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('badges');
   const theme = useUx4gTheme();
 
   return (
@@ -39,167 +50,227 @@ const ShowcaseHub: React.FC = () => {
           },
         ]}
       >
-        <Pressable
-          onPress={() => setActiveTab('spinners')}
-          style={[
-            styles.tabItem,
-            activeTab === 'spinners' && [
-              styles.activeTabItem,
-              { backgroundColor: theme.colors.primary },
-            ],
-          ]}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.tabScrollContainer}
         >
-          <Text
+          <Pressable
+            onPress={() => setActiveTab('spinners')}
             style={[
-              styles.tabText,
-              {
-                color:
-                  activeTab === 'spinners'
-                    ? theme.colors.onPrimary
-                    : theme.isDark
-                    ? '#A1A1AA'
-                    : '#52525B',
-              },
+              styles.tabItem,
+              activeTab === 'spinners' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
             ]}
           >
-            🔄 Spinners
-          </Text>
-        </Pressable>
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'spinners'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🔄 Spinners
+            </Text>
+          </Pressable>
 
-        <Pressable
-          onPress={() => setActiveTab('buttons')}
-          style={[
-            styles.tabItem,
-            activeTab === 'buttons' && [
-              styles.activeTabItem,
-              { backgroundColor: theme.colors.primary },
-            ],
-          ]}
-        >
-          <Text
+          <Pressable
+            onPress={() => setActiveTab('buttons')}
             style={[
-              styles.tabText,
-              {
-                color:
-                  activeTab === 'buttons'
-                    ? theme.colors.onPrimary
-                    : theme.isDark
-                    ? '#A1A1AA'
-                    : '#52525B',
-              },
+              styles.tabItem,
+              activeTab === 'buttons' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
             ]}
           >
-            🔘 Buttons
-          </Text>
-        </Pressable>
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'buttons'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🔘 Buttons
+            </Text>
+          </Pressable>
 
-        <Pressable
-          onPress={() => setActiveTab('checkboxes')}
-          style={[
-            styles.tabItem,
-            activeTab === 'checkboxes' && [
-              styles.activeTabItem,
-              { backgroundColor: theme.colors.primary },
-            ],
-          ]}
-        >
-          <Text
+          <Pressable
+            onPress={() => setActiveTab('checkboxes')}
             style={[
-              styles.tabText,
-              {
-                color:
-                  activeTab === 'checkboxes'
-                    ? theme.colors.onPrimary
-                    : theme.isDark
-                    ? '#A1A1AA'
-                    : '#52525B',
-              },
+              styles.tabItem,
+              activeTab === 'checkboxes' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
             ]}
           >
-            ☑️ Checkboxes
-          </Text>
-        </Pressable>
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'checkboxes'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              ☑️ Checkboxes
+            </Text>
+          </Pressable>
 
-        <Pressable
-          onPress={() => setActiveTab('radios')}
-          style={[
-            styles.tabItem,
-            activeTab === 'radios' && [
-              styles.activeTabItem,
-              { backgroundColor: theme.colors.primary },
-            ],
-          ]}
-        >
-          <Text
+          <Pressable
+            onPress={() => setActiveTab('radios')}
             style={[
-              styles.tabText,
-              {
-                color:
-                  activeTab === 'radios'
-                    ? theme.colors.onPrimary
-                    : theme.isDark
-                    ? '#A1A1AA'
-                    : '#52525B',
-              },
+              styles.tabItem,
+              activeTab === 'radios' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
             ]}
           >
-            🔘 Radios
-          </Text>
-        </Pressable>
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'radios'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🟢 Radios
+            </Text>
+          </Pressable>
 
-        <Pressable
-          onPress={() => setActiveTab('dividers')}
-          style={[
-            styles.tabItem,
-            activeTab === 'dividers' && [
-              styles.activeTabItem,
-              { backgroundColor: theme.colors.primary },
-            ],
-          ]}
-        >
-          <Text
+          <Pressable
+            onPress={() => setActiveTab('dividers')}
             style={[
-              styles.tabText,
-              {
-                color:
-                  activeTab === 'dividers'
-                    ? theme.colors.onPrimary
-                    : theme.isDark
-                    ? '#A1A1AA'
-                    : '#52525B',
-              },
+              styles.tabItem,
+              activeTab === 'dividers' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
             ]}
           >
-            ➖ Dividers
-          </Text>
-        </Pressable>
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'dividers'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              ➖ Dividers
+            </Text>
+          </Pressable>
 
-        <Pressable
-          onPress={() => setActiveTab('switches')}
-          style={[
-            styles.tabItem,
-            activeTab === 'switches' && [
-              styles.activeTabItem,
-              { backgroundColor: theme.colors.primary },
-            ],
-          ]}
-        >
-          <Text
+          <Pressable
+            onPress={() => setActiveTab('switches')}
             style={[
-              styles.tabText,
-              {
-                color:
-                  activeTab === 'switches'
-                    ? theme.colors.onPrimary
-                    : theme.isDark
-                    ? '#A1A1AA'
-                    : '#52525B',
-              },
+              styles.tabItem,
+              activeTab === 'switches' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
             ]}
           >
-            🎚️ Switches
-          </Text>
-        </Pressable>
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'switches'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🎚️ Switches
+            </Text>
+          </Pressable>
+
+          <Pressable
+            onPress={() => setActiveTab('tags')}
+            style={[
+              styles.tabItem,
+              activeTab === 'tags' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'tags'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🏷️ Tags
+            </Text>
+          </Pressable>
+
+          <Pressable
+            onPress={() => setActiveTab('badges')}
+            style={[
+              styles.tabItem,
+              activeTab === 'badges' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'badges'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🔴 Badges
+            </Text>
+          </Pressable>
+        </ScrollView>
       </View>
 
       {/* Active Component Showcase */}
@@ -214,8 +285,12 @@ const ShowcaseHub: React.FC = () => {
           <RadioButtonShowcase />
         ) : activeTab === 'dividers' ? (
           <DividerShowcase />
-        ) : (
+        ) : activeTab === 'switches' ? (
           <SwitchShowcase />
+        ) : activeTab === 'tags' ? (
+          <TagShowcase />
+        ) : (
+          <BadgeShowcase />
         )}
       </View>
     </SafeAreaView>
@@ -235,17 +310,21 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabBar: {
-    flexDirection: 'row',
     margin: 16,
     marginBottom: 4,
-    padding: 4,
+    paddingVertical: 4,
     borderRadius: 12,
     borderWidth: 1,
     zIndex: 10,
   },
+  tabScrollContainer: {
+    paddingHorizontal: 6,
+    alignItems: 'center',
+  },
   tabItem: {
-    flex: 1,
     paddingVertical: 10,
+    paddingHorizontal: 14,
+    marginHorizontal: 4,
     alignItems: 'center',
     borderRadius: 8,
   },

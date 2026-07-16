@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { ButtonShowcase, DividerShowcase, SwitchShowcase } from '../src';
+import { ButtonShowcase, DividerShowcase, SwitchShowcase, TagShowcase, BadgeShowcase } from '../src';
 
 describe('Ux4gButton Showcase Screen', () => {
   it('should render the full interactive ButtonShowcase without errors', () => {
@@ -42,5 +42,22 @@ describe('SwitchShowcase Screen', () => {
     const { getByText } = render(<SwitchShowcase />);
     expect(getByText('Ux4gSwitch (`Ux4gSwitchProps`)')).toBeTruthy();
     expect(getByText('1. Basic Toggle States (`checked`, `unchecked`, `disabled`)')).toBeTruthy();
+  });
+});
+
+describe('TagShowcase Screen', () => {
+  it('should render TagShowcase without errors', () => {
+    const { getByText } = render(<TagShowcase />);
+    expect(getByText('🏷️ Tag Component (`Ux4gTag`)')).toBeTruthy();
+    expect(getByText('1. Color Schemes (`colorScheme`) - Tonal Style')).toBeTruthy();
+  });
+});
+
+describe('BadgeShowcase Screen', () => {
+  it('should render BadgeShowcase without errors', () => {
+    const { getByText } = render(<BadgeShowcase />);
+    expect(getByText('🔴 Badge Component (`Ux4gBadge`)')).toBeTruthy();
+    expect(getByText('1. Dot (`Ux4gBadge.dot`)')).toBeTruthy();
+    expect(getByText('2. Count (`Ux4gBadge.count`)')).toBeTruthy();
   });
 });
