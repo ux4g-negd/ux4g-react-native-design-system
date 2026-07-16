@@ -7,3 +7,4 @@ export * from './switch';
 export * from './tag';
 export * from './badge';
 export * from './social-links';
+export * from './avatar';

@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -32,10 +32,11 @@ type ActiveTab =
   | 'switches'
   | 'tags'
   | 'badges'
-  | 'social-links';
+  | 'social-links'
+  | 'avatar';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('badges');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('avatar');
   const theme = useUx4gTheme();
 
   return (
@@ -75,8 +76,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'spinners'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -102,8 +103,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'buttons'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -129,8 +130,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'checkboxes'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -156,8 +157,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'radios'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -183,8 +184,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'dividers'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -210,8 +211,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'switches'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -237,8 +238,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'tags'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -264,8 +265,8 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'badges'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
@@ -291,12 +292,39 @@ const ShowcaseHub: React.FC = () => {
                     activeTab === 'social-links'
                       ? theme.colors.onPrimary
                       : theme.isDark
-                      ? '#A1A1AA'
-                      : '#52525B',
+                        ? '#A1A1AA'
+                        : '#52525B',
                 },
               ]}
             >
               🔗 Social
+            </Text>
+          </Pressable>
+
+          <Pressable
+            onPress={() => setActiveTab('avatar')}
+            style={[
+              styles.tabItem,
+              activeTab === 'avatar' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'avatar'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              � Avatar
             </Text>
           </Pressable>
         </ScrollView>
@@ -320,6 +348,8 @@ const ShowcaseHub: React.FC = () => {
           <TagShowcase />
         ) : activeTab === 'badges' ? (
           <BadgeShowcase />
+        ) : activeTab === 'avatar' ? (
+          <AvatarShowcase />
         ) : (
           <SocialLinksShowcase />
         )}
