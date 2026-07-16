@@ -16,12 +16,13 @@ import { SpinnerShowcase } from '../src/showcase/SpinnerShowcase';
 import { CheckboxShowcase } from '../src/showcase/CheckboxShowcase';
 import { RadioButtonShowcase } from '../src/showcase/RadioButtonShowcase';
 import { DividerShowcase } from '../src/showcase/DividerShowcase';
+import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
-type ActiveTab = 'spinners' | 'buttons' | 'checkboxes' | 'radios' | 'dividers';
+type ActiveTab = 'spinners' | 'buttons' | 'checkboxes' | 'radios' | 'dividers' | 'switches';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('dividers');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('switches');
   const theme = useUx4gTheme();
 
   return (
@@ -172,6 +173,33 @@ const ShowcaseHub: React.FC = () => {
             ➖ Dividers
           </Text>
         </Pressable>
+
+        <Pressable
+          onPress={() => setActiveTab('switches')}
+          style={[
+            styles.tabItem,
+            activeTab === 'switches' && [
+              styles.activeTabItem,
+              { backgroundColor: theme.colors.primary },
+            ],
+          ]}
+        >
+          <Text
+            style={[
+              styles.tabText,
+              {
+                color:
+                  activeTab === 'switches'
+                    ? theme.colors.onPrimary
+                    : theme.isDark
+                    ? '#A1A1AA'
+                    : '#52525B',
+              },
+            ]}
+          >
+            🎚️ Switches
+          </Text>
+        </Pressable>
       </View>
 
       {/* Active Component Showcase */}
@@ -184,8 +212,10 @@ const ShowcaseHub: React.FC = () => {
           <CheckboxShowcase />
         ) : activeTab === 'radios' ? (
           <RadioButtonShowcase />
-        ) : (
+        ) : activeTab === 'dividers' ? (
           <DividerShowcase />
+        ) : (
+          <SwitchShowcase />
         )}
       </View>
     </SafeAreaView>

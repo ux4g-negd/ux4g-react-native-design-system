@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { ButtonShowcase, DividerShowcase } from '../src';
+import { ButtonShowcase, DividerShowcase, SwitchShowcase } from '../src';
 
 describe('Ux4gButton Showcase Screen', () => {
   it('should render the full interactive ButtonShowcase without errors', () => {
@@ -34,5 +34,13 @@ describe('DividerShowcase Screen', () => {
     const { getByText } = render(<DividerShowcase />);
     expect(getByText('Ux4gDivider (`Ux4gDividerProps`)')).toBeTruthy();
     expect(getByText('1. Line Styles (`solid`, `dashed`, `dotted`)')).toBeTruthy();
+  });
+});
+
+describe('SwitchShowcase Screen', () => {
+  it('should render SwitchShowcase without errors', () => {
+    const { getByText } = render(<SwitchShowcase />);
+    expect(getByText('Ux4gSwitch (`Ux4gSwitchProps`)')).toBeTruthy();
+    expect(getByText('1. Basic Toggle States (`checked`, `unchecked`, `disabled`)')).toBeTruthy();
   });
 });
