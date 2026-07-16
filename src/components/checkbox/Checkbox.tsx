@@ -270,11 +270,7 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
       }}
       disabled={!enabled || !onChanged}
       onPress={handlePress}
-      android_ripple={
-        enabled && onChanged
-          ? { color: rippleColor, borderless: false }
-          : undefined
-      }
+      android_ripple={undefined}
       style={(state) => {
         const customStyle =
           typeof style === 'function' ? style(state) : style;
@@ -290,10 +286,25 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
       }}
       {...restProps}
     >
-      <View
-        style={[
+      <Pressable
+        disabled={!enabled || !onChanged}
+        onPress={handlePress}
+        android_ripple={
+          enabled && onChanged
+            ? {
+                color: rippleColor,
+                borderless: true,
+                radius: Math.round(sizeCfg.boxSize * 1.1 + 4),
+              }
+            : undefined
+        }
+        style={(state) => [
           styles.checkboxAlignmentWrapper,
-          { marginTop: hasDescription ? 2 : 0 },
+          {
+            marginTop: hasDescription ? 2 : 0,
+            opacity:
+              state.pressed && enabled && Platform.OS !== 'android' ? 0.8 : 1,
+          },
         ]}
       >
         <View
@@ -310,7 +321,7 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
         >
           {renderCheckGlyph()}
         </View>
-      </View>
+      </Pressable>
 
       {(hasLabel || hasDescription) && (
         <View style={styles.textColumn}>
