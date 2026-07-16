@@ -23,6 +23,12 @@ export const CheckboxShowcase: React.FC = () => {
   const [sizeMd, setSizeMd] = useState<boolean | null>(true);
   const [sizeLg, setSizeLg] = useState<boolean | null>(true);
 
+  // Horizontal status grid state
+  const [stateHelper, setStateHelper] = useState<boolean | null>(true);
+  const [stateError, setStateError] = useState<boolean | null>(false);
+  const [stateWarning, setStateWarning] = useState<boolean | null>(true);
+  const [stateSuccess, setStateSuccess] = useState<boolean | null>(true);
+
   return (
     <ScrollView
       style={[styles.container, { backgroundColor: theme.colors.background }]}
@@ -184,6 +190,69 @@ export const CheckboxShowcase: React.FC = () => {
             descriptionVariant="success"
           />
         </View>
+
+        <Text
+          style={[
+            styles.sectionTitle,
+            { color: theme.colors.onBackground, marginTop: 20 },
+          ]}
+        >
+          Horizontal Status States (`helper`, `error`, `warning`, `success`)
+        </Text>
+        <Text
+          style={[
+            styles.sectionDesc,
+            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+          ]}
+        >
+          Clean side-by-side comparison of all 4 description variant status icons with check and error rings.
+        </Text>
+
+        <View style={styles.card}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.horizontalRowContainer}
+          >
+            <View style={styles.horizontalGridItem}>
+              <Ux4gCheckbox
+                value={stateHelper}
+                onChanged={(val) => setStateHelper(val)}
+                label="Label"
+                description="Default description"
+                descriptionVariant="helper"
+              />
+            </View>
+            <View style={styles.horizontalGridItem}>
+              <Ux4gCheckbox
+                value={stateError}
+                onChanged={(val) => setStateError(val)}
+                label="Label"
+                hasError={true}
+                description="Error text"
+                descriptionVariant="error"
+              />
+            </View>
+            <View style={styles.horizontalGridItem}>
+              <Ux4gCheckbox
+                value={stateWarning}
+                onChanged={(val) => setStateWarning(val)}
+                label="Label"
+                description="Warning text"
+                descriptionVariant="warning"
+              />
+            </View>
+            <View style={styles.horizontalGridItem}>
+              <Ux4gCheckbox
+                value={stateSuccess}
+                onChanged={(val) => setStateSuccess(val)}
+                label="Label"
+                description="Success text"
+                descriptionVariant="success"
+              />
+            </View>
+          </ScrollView>
+        </View>
       </View>
 
       {/* 4. Disabled States */}
@@ -318,5 +387,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginTop: 10,
+  },
+  horizontalRowContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingVertical: 4,
+  },
+  horizontalGridItem: {
+    marginRight: 28,
+    minWidth: 170,
   },
 });

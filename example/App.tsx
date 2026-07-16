@@ -14,12 +14,13 @@ import {
 import { ButtonShowcase } from '../src/showcase/ButtonShowcase';
 import { SpinnerShowcase } from '../src/showcase/SpinnerShowcase';
 import { CheckboxShowcase } from '../src/showcase/CheckboxShowcase';
+import { RadioButtonShowcase } from '../src/showcase/RadioButtonShowcase';
 import { Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
-type ActiveTab = 'spinners' | 'buttons' | 'checkboxes';
+type ActiveTab = 'spinners' | 'buttons' | 'checkboxes' | 'radios';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('checkboxes');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('radios');
   const theme = useUx4gTheme();
 
   return (
@@ -116,6 +117,33 @@ const ShowcaseHub: React.FC = () => {
             ☑️ Checkboxes
           </Text>
         </Pressable>
+
+        <Pressable
+          onPress={() => setActiveTab('radios')}
+          style={[
+            styles.tabItem,
+            activeTab === 'radios' && [
+              styles.activeTabItem,
+              { backgroundColor: theme.colors.primary },
+            ],
+          ]}
+        >
+          <Text
+            style={[
+              styles.tabText,
+              {
+                color:
+                  activeTab === 'radios'
+                    ? theme.colors.onPrimary
+                    : theme.isDark
+                    ? '#A1A1AA'
+                    : '#52525B',
+              },
+            ]}
+          >
+            🔘 Radios
+          </Text>
+        </Pressable>
       </View>
 
       {/* Active Component Showcase */}
@@ -124,8 +152,10 @@ const ShowcaseHub: React.FC = () => {
           <SpinnerShowcase />
         ) : activeTab === 'buttons' ? (
           <ButtonShowcase />
-        ) : (
+        ) : activeTab === 'checkboxes' ? (
           <CheckboxShowcase />
+        ) : (
+          <RadioButtonShowcase />
         )}
       </View>
     </SafeAreaView>

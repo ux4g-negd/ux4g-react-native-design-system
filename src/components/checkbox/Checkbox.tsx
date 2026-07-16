@@ -17,10 +17,12 @@ import { Ux4gPalette } from '../../foundation/colors';
 // Dynamically require react-native-svg for crisp vector checkmarks and dashes
 let SvgComponent: any = null;
 let PathComponent: any = null;
+let CircleComponent: any = null;
 try {
   const rns = require('react-native-svg');
   SvgComponent = rns.Svg;
   PathComponent = rns.Path;
+  CircleComponent = rns.Circle;
 } catch (e) {
   // react-native-svg not available, fallback to native View/Text
 }
@@ -257,6 +259,62 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
     return null;
   };
 
+  const renderDescriptionIcon = () => {
+    if (SvgComponent && PathComponent) {
+      if (descriptionVariant === 'error') {
+        return (
+          <SvgComponent width={16} height={16} viewBox="0 0 24 24" fill="none">
+            {CircleComponent && (
+              <CircleComponent cx="12" cy="12" r="10" stroke={descriptionColor} strokeWidth="2" />
+            )}
+            <PathComponent d="M12 8v4M12 16h.01" stroke={descriptionColor} strokeWidth="2" strokeLinecap="round" />
+          </SvgComponent>
+        );
+      }
+      if (descriptionVariant === 'warning') {
+        return (
+          <SvgComponent width={16} height={16} viewBox="0 0 24 24" fill="none">
+            <PathComponent
+              d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"
+              stroke={descriptionColor}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </SvgComponent>
+        );
+      }
+      if (descriptionVariant === 'success') {
+        return (
+          <SvgComponent width={16} height={16} viewBox="0 0 24 24" fill="none">
+            {CircleComponent && (
+              <CircleComponent cx="12" cy="12" r="10" stroke={descriptionColor} strokeWidth="2" />
+            )}
+            <PathComponent d="M8 12l2.5 2.5L16 9" stroke={descriptionColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </SvgComponent>
+        );
+      }
+      return (
+        <SvgComponent width={16} height={16} viewBox="0 0 24 24" fill="none">
+          {CircleComponent && (
+            <CircleComponent cx="12" cy="12" r="10" stroke={descriptionColor} strokeWidth="2" />
+          )}
+          <PathComponent d="M12 16v-4M12 8h.01" stroke={descriptionColor} strokeWidth="2" strokeLinecap="round" />
+        </SvgComponent>
+      );
+    }
+
+    let symbol = 'ⓘ';
+    if (descriptionVariant === 'error') symbol = '⚠';
+    if (descriptionVariant === 'warning') symbol = '⚠';
+    if (descriptionVariant === 'success') symbol = '✓';
+    return (
+      <Text style={[styles.fallbackIconText, { color: descriptionColor }]}>
+        {symbol}
+      </Text>
+    );
+  };
+
   const rippleColor = getHexWithAlpha(theme.colors.primary, '1F');
 
   return (
@@ -278,6 +336,7 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
         return [
           styles.rowContainer,
           {
+            alignItems: hasDescription ? 'flex-start' : 'center',
             opacity:
               state.pressed && enabled && Platform.OS !== 'android' ? 0.8 : 1,
           },
@@ -301,7 +360,6 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
         style={(state) => [
           styles.checkboxAlignmentWrapper,
           {
-            marginTop: hasDescription ? 2 : 0,
             opacity:
               state.pressed && enabled && Platform.OS !== 'android' ? 0.8 : 1,
           },
@@ -346,21 +404,30 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
           )}
 
           {hasDescription && (
-            <Text
+            <View
               style={[
-                styles.descriptionText,
-                {
-                  fontSize: theme.typography.lS_default.fontSize,
-                  fontWeight: theme.typography.lS_default.fontWeight,
-                  lineHeight: theme.typography.lS_default.lineHeight,
-                  color: descriptionColor,
-                  marginTop: hasLabel ? 4 : 0,
-                },
-                descriptionStyle,
+                styles.descriptionRow,
+                { marginTop: hasLabel ? 4 : 0 },
               ]}
             >
-              {description}
-            </Text>
+              <View style={styles.descriptionIconContainer}>
+                {renderDescriptionIcon()}
+              </View>
+              <Text
+                style={[
+                  styles.descriptionText,
+                  {
+                    fontSize: theme.typography.lS_default.fontSize,
+                    fontWeight: theme.typography.lS_default.fontWeight,
+                    lineHeight: theme.typography.lS_default.lineHeight,
+                    color: descriptionColor,
+                  },
+                  descriptionStyle,
+                ]}
+              >
+                {description}
+              </Text>
+            </View>
           )}
         </View>
       )}
@@ -371,7 +438,7 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
 const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     paddingVertical: 6,
   },
   checkboxAlignmentWrapper: {
@@ -401,7 +468,22 @@ const styles = StyleSheet.create({
   labelText: {
     includeFontPadding: false,
   },
+  descriptionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  descriptionIconContainer: {
+    marginRight: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fallbackIconText: {
+    fontSize: 13,
+    fontWeight: '700',
+    includeFontPadding: false,
+  },
   descriptionText: {
+    flex: 1,
     includeFontPadding: false,
   },
 });
