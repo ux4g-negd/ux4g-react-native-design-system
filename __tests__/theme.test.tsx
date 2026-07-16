@@ -6,7 +6,7 @@ import {
   useUx4gStyleSheet,
   lightUx4gColors,
   darkUx4gColors,
-  Ux4gPalette,
+  UX4GColors,
 } from '../src';
 
 describe('UX4G Theme Provider and Hooks', () => {

@@ -3,7 +3,7 @@
  * Direct port of the UX4G Flutter design system colors (`colors.dart`).
  */
 
-export const Ux4gPalette = {
+export const UX4GColors = {
   // Legacy gray aliases
   gray100: '#F5F5F5',
   gray200: '#EEEEEE',
@@ -279,6 +279,8 @@ export const Ux4gPalette = {
   transparent: 'rgba(0, 0, 0, 0)',
 } as const;
 
+export const Ux4gPalette = UX4GColors;
+
 export interface Ux4gColors {
   primary: string;
   onPrimary: string;
@@ -299,39 +301,39 @@ export interface Ux4gColors {
 }
 
 export const lightUx4gColors: Ux4gColors = {
-  primary: Ux4gPalette.primary600,
-  onPrimary: Ux4gPalette.neutral50,
-  secondary: Ux4gPalette.secondary600,
-  onSecondary: Ux4gPalette.white,
-  background: Ux4gPalette.neutral50,
-  onBackground: Ux4gPalette.neutral900,
-  surface: Ux4gPalette.white,
-  onSurface: Ux4gPalette.neutral900,
-  error: Ux4gPalette.red600,
-  onError: Ux4gPalette.neutral50,
-  success: Ux4gPalette.green600,
-  onSuccess: Ux4gPalette.neutral50,
-  warning: Ux4gPalette.orange600,
-  onWarning: Ux4gPalette.neutral900,
-  info: Ux4gPalette.cyan600,
-  onInfo: Ux4gPalette.neutral50,
+  primary: UX4GColors.primary600,
+  onPrimary: UX4GColors.neutral50,
+  secondary: UX4GColors.secondary600,
+  onSecondary: UX4GColors.white,
+  background: UX4GColors.neutral50,
+  onBackground: UX4GColors.neutral900,
+  surface: UX4GColors.white,
+  onSurface: UX4GColors.neutral900,
+  error: UX4GColors.red600,
+  onError: UX4GColors.neutral50,
+  success: UX4GColors.green600,
+  onSuccess: UX4GColors.neutral50,
+  warning: UX4GColors.orange600,
+  onWarning: UX4GColors.neutral900,
+  info: UX4GColors.cyan600,
+  onInfo: UX4GColors.neutral50,
 };
 
 export const darkUx4gColors: Ux4gColors = {
-  primary: Ux4gPalette.primary300,
-  onPrimary: Ux4gPalette.neutral900,
-  secondary: Ux4gPalette.secondary300,
-  onSecondary: Ux4gPalette.neutral900,
-  background: Ux4gPalette.neutral900,
-  onBackground: Ux4gPalette.neutral50,
-  surface: Ux4gPalette.neutral950,
-  onSurface: Ux4gPalette.neutral50,
-  error: Ux4gPalette.red300,
-  onError: Ux4gPalette.neutral900,
-  success: Ux4gPalette.green500,
-  onSuccess: Ux4gPalette.neutral900,
-  warning: Ux4gPalette.orange500,
-  onWarning: Ux4gPalette.neutral900,
-  info: Ux4gPalette.cyan500,
-  onInfo: Ux4gPalette.neutral900,
+  primary: UX4GColors.primary300,
+  onPrimary: UX4GColors.neutral900,
+  secondary: UX4GColors.secondary300,
+  onSecondary: UX4GColors.neutral900,
+  background: UX4GColors.neutral900,
+  onBackground: UX4GColors.neutral50,
+  surface: UX4GColors.neutral950,
+  onSurface: UX4GColors.neutral50,
+  error: UX4GColors.red300,
+  onError: UX4GColors.neutral900,
+  success: UX4GColors.green500,
+  onSuccess: UX4GColors.neutral900,
+  warning: UX4GColors.orange500,
+  onWarning: UX4GColors.neutral900,
+  info: UX4GColors.cyan500,
+  onInfo: UX4GColors.neutral900,
 };

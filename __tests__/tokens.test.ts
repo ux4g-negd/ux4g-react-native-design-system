@@ -1,5 +1,5 @@
 import {
-  Ux4gPalette,
+  UX4GColors,
   lightUx4gColors,
   darkUx4gColors,
   defaultUx4gTypography,
@@ -11,26 +11,26 @@ import {
 describe('UX4G React Native Design System Tokens', () => {
   describe('Color Palette Tokens', () => {
     it('should exact match key primary, secondary, and neutral colors from Flutter design system', () => {
-      expect(Ux4gPalette.primary600).toBe('#4A2BC2');
-      expect(Ux4gPalette.primary300).toBe('#A391FF');
-      expect(Ux4gPalette.secondary600).toBe('#A46800');
-      expect(Ux4gPalette.neutral0).toBe('#FFFFFF');
-      expect(Ux4gPalette.neutral900).toBe('#171717');
-      expect(Ux4gPalette.neutral1000black).toBe('#000000');
+      expect(UX4GColors.primary600).toBe('#4A2BC2');
+      expect(UX4GColors.primary300).toBe('#A391FF');
+      expect(UX4GColors.secondary600).toBe('#A46800');
+      expect(UX4GColors.neutral0).toBe('#FFFFFF');
+      expect(UX4GColors.neutral900).toBe('#171717');
+      expect(UX4GColors.neutral1000black).toBe('#000000');
     });
 
     it('should exact match semantic colors for light and dark themes', () => {
-      expect(lightUx4gColors.primary).toBe(Ux4gPalette.primary600);
-      expect(lightUx4gColors.onPrimary).toBe(Ux4gPalette.neutral50);
-      expect(lightUx4gColors.background).toBe(Ux4gPalette.neutral50);
-      expect(lightUx4gColors.surface).toBe(Ux4gPalette.white);
-      expect(lightUx4gColors.error).toBe(Ux4gPalette.red600);
+      expect(lightUx4gColors.primary).toBe(UX4GColors.primary600);
+      expect(lightUx4gColors.onPrimary).toBe(UX4GColors.neutral50);
+      expect(lightUx4gColors.background).toBe(UX4GColors.neutral50);
+      expect(lightUx4gColors.surface).toBe(UX4GColors.white);
+      expect(lightUx4gColors.error).toBe(UX4GColors.red600);
 
-      expect(darkUx4gColors.primary).toBe(Ux4gPalette.primary300);
-      expect(darkUx4gColors.onPrimary).toBe(Ux4gPalette.neutral900);
-      expect(darkUx4gColors.background).toBe(Ux4gPalette.neutral900);
-      expect(darkUx4gColors.surface).toBe(Ux4gPalette.neutral950);
-      expect(darkUx4gColors.error).toBe(Ux4gPalette.red300);
+      expect(darkUx4gColors.primary).toBe(UX4GColors.primary300);
+      expect(darkUx4gColors.onPrimary).toBe(UX4GColors.neutral900);
+      expect(darkUx4gColors.background).toBe(UX4GColors.neutral900);
+      expect(darkUx4gColors.surface).toBe(UX4GColors.neutral950);
+      expect(darkUx4gColors.error).toBe(UX4GColors.red300);
     });
   });
 

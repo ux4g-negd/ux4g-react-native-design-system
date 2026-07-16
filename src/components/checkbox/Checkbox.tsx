@@ -12,7 +12,7 @@ import {
   Platform,
 } from 'react-native';
 import { useUx4gTheme } from '../../theme/Ux4gThemeContext';
-import { Ux4gPalette } from '../../foundation/colors';
+import { UX4GColors } from '../../foundation/colors';
 
 // Dynamically require react-native-svg for crisp vector checkmarks and dashes
 let SvgComponent: any = null;
@@ -158,8 +158,8 @@ export const Ux4gCheckbox: React.FC<Ux4gCheckboxProps> = ({
       boxBorderColor = theme.colors.error;
     } else {
       boxBorderColor = theme.isDark
-        ? Ux4gPalette.neutral700
-        : Ux4gPalette.neutral300;
+        ? UX4GColors.neutral700
+        : UX4GColors.neutral300;
     }
   }
 

@@ -12,7 +12,7 @@ import {
   useUx4gStyleSheet,
   Ux4gSpinner,
   Ux4gButton,
-  Ux4gPalette,
+  UX4GColors,
 } from '../index';
 
 const ShowcaseContent: React.FC = () => {
@@ -35,12 +35,12 @@ const ShowcaseContent: React.FC = () => {
       marginBottom: t.space.space24,
       paddingBottom: t.space.space16,
       borderBottomWidth: 1,
-      borderBottomColor: t.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+      borderBottomColor: t.isDark ? UX4GColors.neutral800 : UX4GColors.neutral200,
     },
     title: {
       fontSize: 24,
       fontWeight: '700',
-      color: t.isDark ? Ux4gPalette.white : t.colors.primary,
+      color: t.isDark ? UX4GColors.white : t.colors.primary,
     },
     subtitle: {
       fontSize: 14,
@@ -58,7 +58,7 @@ const ShowcaseContent: React.FC = () => {
     },
     sectionDescription: {
       fontSize: 13,
-      color: t.isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+      color: t.isDark ? UX4GColors.neutral400 : UX4GColors.neutral600,
       marginBottom: t.space.space16,
     },
     row: {
@@ -74,15 +74,15 @@ const ShowcaseContent: React.FC = () => {
     },
     label: {
       fontSize: 12,
-      color: t.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700,
+      color: t.isDark ? UX4GColors.neutral300 : UX4GColors.neutral700,
       fontWeight: '500',
     },
     card: {
       padding: t.space.space16,
       borderRadius: t.radius.radius12,
       borderWidth: 1,
-      borderColor: t.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
-      backgroundColor: t.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      borderColor: t.isDark ? UX4GColors.neutral800 : UX4GColors.neutral200,
+      backgroundColor: t.isDark ? UX4GColors.neutral900 : UX4GColors.neutral50,
       marginBottom: t.space.space16,
     },
   }));
@@ -145,12 +145,12 @@ const ShowcaseContent: React.FC = () => {
               <Text style={styles.label}>Secondary</Text>
             </View>
             <View style={styles.itemCol}>
-              <Ux4gSpinner color={Ux4gPalette.green500} />
-              <Text style={styles.label}>Success ({Ux4gPalette.green500})</Text>
+              <Ux4gSpinner color={UX4GColors.green500} />
+              <Text style={styles.label}>Success ({UX4GColors.green500})</Text>
             </View>
             <View style={styles.itemCol}>
-              <Ux4gSpinner color={Ux4gPalette.pink500} />
-              <Text style={styles.label}>Pink ({Ux4gPalette.pink500})</Text>
+              <Ux4gSpinner color={UX4GColors.pink500} />
+              <Text style={styles.label}>Pink ({UX4GColors.pink500})</Text>
             </View>
           </View>
         </View>
@@ -188,7 +188,7 @@ const ShowcaseContent: React.FC = () => {
               <Ux4gSpinner
                 size={52}
                 strokeWidth={5}
-                gradientColors={[Ux4gPalette.primary500, Ux4gPalette.pink500, Ux4gPalette.gold500, 'transparent']}
+                gradientColors={[UX4GColors.primary500, UX4GColors.pink500, UX4GColors.gold500, 'transparent']}
               />
               <Text style={styles.label}>Primary / Pink / Gold</Text>
             </View>
@@ -196,7 +196,7 @@ const ShowcaseContent: React.FC = () => {
               <Ux4gSpinner
                 size={52}
                 strokeWidth={5}
-                gradientColors={[Ux4gPalette.green500, Ux4gPalette.blue500, 'transparent', 'transparent']}
+                gradientColors={[UX4GColors.green500, UX4GColors.blue500, 'transparent', 'transparent']}
               />
               <Text style={styles.label}>Green / Blue</Text>
             </View>

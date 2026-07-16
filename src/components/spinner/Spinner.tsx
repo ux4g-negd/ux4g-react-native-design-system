@@ -8,7 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useUx4gTheme } from '../../theme/Ux4gThemeContext';
-import { Ux4gPalette } from '../../foundation/colors';
+import { UX4GColors } from '../../foundation/colors';
 
 // Dynamically require react-native-svg so that it works seamlessly when installed,
 // without crashing in environments where native SVG is not linked.
@@ -48,7 +48,7 @@ export interface Ux4gSpinnerProps {
 
 // Helper to interpolate between hex colors across segments when gradientColors is provided
 const interpolateColor = (colors: string[], fraction: number): string => {
-  if (!colors || colors.length === 0) return Ux4gPalette.primary600;
+  if (!colors || colors.length === 0) return UX4GColors.primary600;
   if (colors.length === 1) return colors[0];
   const scaled = Math.max(0, Math.min(1, fraction)) * (colors.length - 1);
   const index = Math.floor(scaled);

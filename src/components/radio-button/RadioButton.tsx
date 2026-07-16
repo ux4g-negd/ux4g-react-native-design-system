@@ -12,7 +12,7 @@ import {
   Platform,
 } from 'react-native';
 import { useUx4gTheme } from '../../theme/Ux4gThemeContext';
-import { Ux4gPalette } from '../../foundation/colors';
+import { UX4GColors } from '../../foundation/colors';
 import { Ux4gIconProp } from '../button/Button';
 
 // Dynamically require react-native-svg for crisp vector icons if available
@@ -189,8 +189,8 @@ export function Ux4gRadioButton<T = any>({
   }
 
   const unselectedBorderColor = theme.isDark
-    ? Ux4gPalette.neutral700
-    : Ux4gPalette.neutral300;
+    ? UX4GColors.neutral700
+    : UX4GColors.neutral300;
 
   const radioColor = !enabled
     ? getHexWithAlpha(theme.colors.onSurface, '61') // 38% alpha
@@ -354,8 +354,8 @@ export function Ux4gRadioButton<T = any>({
                 backgroundColor: !enabled
                   ? radioColor
                   : theme.isDark
-                  ? Ux4gPalette.neutral1000black
-                  : Ux4gPalette.white,
+                  ? UX4GColors.neutral1000black
+                  : UX4GColors.white,
               }}
             />
           </View>
