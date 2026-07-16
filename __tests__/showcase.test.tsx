@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { ButtonShowcase } from '../src';
+import { ButtonShowcase, DividerShowcase } from '../src';
 
 describe('Ux4gButton Showcase Screen', () => {
   it('should render the full interactive ButtonShowcase without errors', () => {
@@ -26,5 +26,13 @@ describe('Ux4gButton Showcase Screen', () => {
 
     expect(getByText('Dark Theme Active')).toBeTruthy();
     expect(getByText('☀️ Light')).toBeTruthy();
+  });
+});
+
+describe('DividerShowcase Screen', () => {
+  it('should render DividerShowcase without errors', () => {
+    const { getByText } = render(<DividerShowcase />);
+    expect(getByText('Ux4gDivider (`Ux4gDividerProps`)')).toBeTruthy();
+    expect(getByText('1. Line Styles (`solid`, `dashed`, `dotted`)')).toBeTruthy();
   });
 });
