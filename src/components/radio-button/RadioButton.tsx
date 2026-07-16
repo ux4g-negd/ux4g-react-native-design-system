@@ -354,8 +354,8 @@ export function Ux4gRadioButton<T = any>({
                 backgroundColor: !enabled
                   ? radioColor
                   : theme.isDark
-                  ? '#000000'
-                  : '#FFFFFF',
+                  ? Ux4gPalette.neutral1000black
+                  : Ux4gPalette.white,
               }}
             />
           </View>

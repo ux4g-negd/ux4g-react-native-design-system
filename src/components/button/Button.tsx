@@ -13,6 +13,7 @@ import {
   Platform,
 } from 'react-native';
 import { useUx4gTheme } from '../../theme/Ux4gThemeContext';
+import { Ux4gPalette } from '../../foundation/colors';
 import { Ux4gSpinner } from '../spinner/Spinner';
 
 export type Ux4gButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -282,7 +283,7 @@ export const Ux4gButton: React.FC<Ux4gButtonProps> = ({
           elevation > 0
             ? {
                 elevation,
-                shadowColor: '#000',
+                shadowColor: Ux4gPalette.neutral1000black,
                 shadowOffset: { width: 0, height: elevation * 0.5 },
                 shadowOpacity: 0.15,
                 shadowRadius: elevation * 0.8,

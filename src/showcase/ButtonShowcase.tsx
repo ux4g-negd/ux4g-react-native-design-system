@@ -15,6 +15,7 @@ import {
   Ux4gOutlineButton,
   Ux4gTextButton,
   Ux4gIconButton,
+  Ux4gPalette,
 } from '../index';
 
 const ShowcaseContent: React.FC = () => {
@@ -37,12 +38,12 @@ const ShowcaseContent: React.FC = () => {
       marginBottom: t.space.space24,
       paddingBottom: t.space.space16,
       borderBottomWidth: 1,
-      borderBottomColor: t.isDark ? '#333333' : '#E5E5E5',
+      borderBottomColor: t.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
     },
     title: {
       fontSize: 24,
       fontWeight: '700',
-      color: t.isDark ? '#FFFFFF' : t.colors.primary,
+      color: t.isDark ? Ux4gPalette.white : t.colors.primary,
     },
     subtitle: {
       fontSize: 14,
@@ -60,7 +61,7 @@ const ShowcaseContent: React.FC = () => {
     },
     sectionDescription: {
       fontSize: 13,
-      color: '#666666',
+      color: t.isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
       marginBottom: t.space.space16,
     },
     row: {
@@ -77,8 +78,8 @@ const ShowcaseContent: React.FC = () => {
       padding: t.space.space16,
       borderRadius: t.radius.radius12,
       borderWidth: 1,
-      borderColor: t.isDark ? '#333333' : '#EAEAEA',
-      backgroundColor: t.isDark ? '#1F1F1F' : '#F9F9F9',
+      borderColor: t.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+      backgroundColor: t.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
       marginBottom: t.space.space16,
     },
     iconText: {
@@ -243,9 +244,9 @@ const ShowcaseContent: React.FC = () => {
             </Text>
             <Ux4gButton
               text="Custom Pill Action"
-              backgroundColor="#10B981"
+              backgroundColor={Ux4gPalette.green500}
               borderRadius={999}
-              contentColor="#FFFFFF"
+              contentColor={Ux4gPalette.white}
             />
           </View>
 
@@ -256,9 +257,9 @@ const ShowcaseContent: React.FC = () => {
             <Ux4gButton
               variant="outline"
               text="High-Contrast Outline"
-              borderColor="#6366F1"
+              borderColor={Ux4gPalette.primary500}
               borderWidth={2}
-              contentColor="#6366F1"
+              contentColor={Ux4gPalette.primary500}
               textStyle={{ fontWeight: '700', letterSpacing: 1.5 }}
             />
           </View>
@@ -269,11 +270,11 @@ const ShowcaseContent: React.FC = () => {
             </Text>
             <Ux4gButton
               text="Press & Hold for Scale Effect"
-              backgroundColor="#F59E0B"
-              contentColor="#000000"
+              backgroundColor={Ux4gPalette.gold500}
+              contentColor={Ux4gPalette.neutral1000black}
               style={({ pressed }) => ({
                 transform: [{ scale: pressed ? 0.95 : 1 }],
-                shadowColor: '#F59E0B',
+                shadowColor: Ux4gPalette.gold500,
                 shadowOffset: { width: 0, height: 4 },
                 shadowOpacity: pressed ? 0.4 : 0.2,
                 shadowRadius: 8,

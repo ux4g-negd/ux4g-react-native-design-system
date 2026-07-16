@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useUx4gTheme } from '../theme/Ux4gThemeContext';
+import { Ux4gPalette } from '../foundation/colors';
 import { Ux4gCheckbox } from '../components/checkbox/Checkbox';
 import { Ux4gButton } from '../components/button/Button';
 
@@ -62,7 +63,7 @@ export const CheckboxShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Taps automatically cycle across state: if Indeterminate (`null`) → `true` → `false` → `true`.
@@ -107,7 +108,7 @@ export const CheckboxShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Supports `small` (16pt box), `medium` (20pt box, default), and `large` (24pt box).
@@ -148,7 +149,7 @@ export const CheckboxShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Dynamic color support for `helper`, `error`, `warning`, and `success` descriptions.
@@ -202,7 +203,7 @@ export const CheckboxShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Clean side-by-side comparison of all 4 description variant status icons with check and error rings.
@@ -263,7 +264,7 @@ export const CheckboxShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Applies 12% opacity (`1F`) box fill/border and 38% (`61`) text opacity per design specs.
@@ -304,7 +305,7 @@ export const CheckboxShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Combine checkboxes with live form validation and state updates.

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useUx4gTheme } from '../theme/Ux4gThemeContext';
+import { Ux4gPalette } from '../foundation/colors';
 import { Ux4gRadioButton } from '../components/radio-button/RadioButton';
 import { Ux4gButton } from '../components/button/Button';
 
@@ -55,7 +56,7 @@ export const RadioButtonShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Select an option below. Selected: {basicSelection}
@@ -64,8 +65,8 @@ export const RadioButtonShowcase: React.FC = () => {
           style={[
             styles.card,
             {
-              backgroundColor: theme.isDark ? '#1F1F1F' : '#F9FAFB',
-              borderColor: theme.isDark ? '#333333' : '#E5E7EB',
+              backgroundColor: theme.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              borderColor: theme.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
             },
           ]}
         >
@@ -104,7 +105,7 @@ export const RadioButtonShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Supports small (16pt), medium (20pt), and large (24pt) dimensions.
@@ -113,8 +114,8 @@ export const RadioButtonShowcase: React.FC = () => {
           style={[
             styles.card,
             {
-              backgroundColor: theme.isDark ? '#1F1F1F' : '#F9FAFB',
-              borderColor: theme.isDark ? '#333333' : '#E5E7EB',
+              backgroundColor: theme.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              borderColor: theme.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
             },
           ]}
         >
@@ -155,7 +156,7 @@ export const RadioButtonShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Ring color driven independently or synced with form status.
@@ -164,8 +165,8 @@ export const RadioButtonShowcase: React.FC = () => {
           style={[
             styles.card,
             {
-              backgroundColor: theme.isDark ? '#1F1F1F' : '#F9FAFB',
-              borderColor: theme.isDark ? '#333333' : '#E5E7EB',
+              backgroundColor: theme.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              borderColor: theme.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
             },
           ]}
         >
@@ -197,12 +198,12 @@ export const RadioButtonShowcase: React.FC = () => {
           />
           <View style={styles.divider} />
           <Ux4gRadioButton
-            color="#A46800"
+            color={Ux4gPalette.secondary600}
             value="custom"
             groupValue={statusSelection}
             onChanged={(val) => setStatusSelection(val)}
             label="Custom Direct Color Override"
-            description="Using explicit color=#A46800"
+            description="Using explicit foundation color (Ux4gPalette.secondary600)"
           />
         </View>
       </View>
@@ -215,7 +216,7 @@ export const RadioButtonShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Helper, Error, Warning, and Success descriptions with status icons.
@@ -224,8 +225,8 @@ export const RadioButtonShowcase: React.FC = () => {
           style={[
             styles.card,
             {
-              backgroundColor: theme.isDark ? '#1F1F1F' : '#F9FAFB',
-              borderColor: theme.isDark ? '#333333' : '#E5E7EB',
+              backgroundColor: theme.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              borderColor: theme.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
             },
           ]}
         >
@@ -277,7 +278,7 @@ export const RadioButtonShowcase: React.FC = () => {
         <Text
           style={[
             styles.sectionDesc,
-            { color: theme.isDark ? '#D9D9D9' : '#525252' },
+            { color: theme.isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600 },
           ]}
         >
           Clean side-by-side comparison of all 4 description variant status icons with check/radio and status rings.
@@ -286,8 +287,8 @@ export const RadioButtonShowcase: React.FC = () => {
           style={[
             styles.card,
             {
-              backgroundColor: theme.isDark ? '#1F1F1F' : '#F9FAFB',
-              borderColor: theme.isDark ? '#333333' : '#E5E7EB',
+              backgroundColor: theme.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              borderColor: theme.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
             },
           ]}
         >
@@ -352,8 +353,8 @@ export const RadioButtonShowcase: React.FC = () => {
           style={[
             styles.card,
             {
-              backgroundColor: theme.isDark ? '#1F1F1F' : '#F9FAFB',
-              borderColor: theme.isDark ? '#333333' : '#E5E7EB',
+              backgroundColor: theme.isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              borderColor: theme.isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
             },
           ]}
         >
