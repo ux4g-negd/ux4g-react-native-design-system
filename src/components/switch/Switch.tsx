@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { useUx4gTheme } from '../../theme/Ux4gThemeContext';
 import { UX4GColors } from '../../foundation/colors';
-import { Ux4gTypography } from '../../foundation/typography';
+import { Ux4gTypography } from '@/foundation/typography';
 
 // Dynamic import of react-native-svg for optional vector icons inside status descriptions
 let SvgComponent: any = null;
@@ -258,8 +258,8 @@ export const Ux4gSwitch: React.FC<Ux4gSwitchProps> = ({
   const trackColor = !enabled
     ? disabledTrackColor
     : isChecked
-    ? checkedTrackColor
-    : uncheckedTrackColor;
+      ? checkedTrackColor
+      : uncheckedTrackColor;
 
   const thumbColor = isDark && isChecked && enabled ? UX4GColors.gray900 : UX4GColors.white;
 
@@ -414,10 +414,10 @@ export const Ux4gSwitch: React.FC<Ux4gSwitchProps> = ({
         android_ripple={
           enabled && handleToggle
             ? {
-                color: rippleColor,
-                borderless: true,
-                radius: Math.round(sizeCfg.height / 2 + 8),
-              }
+              color: rippleColor,
+              borderless: true,
+              radius: Math.round(sizeCfg.height / 2 + 8),
+            }
             : undefined
         }
         style={(state) => [
@@ -467,10 +467,10 @@ export const Ux4gSwitch: React.FC<Ux4gSwitchProps> = ({
       android_ripple={
         enabled && handleToggle
           ? {
-              color: rippleColor,
-              borderless: true,
-              radius: Math.round(sizeCfg.height / 2 + 8),
-            }
+            color: rippleColor,
+            borderless: true,
+            radius: Math.round(sizeCfg.height / 2 + 8),
+          }
           : undefined
       }
       style={(state) => [

@@ -6,3 +6,4 @@ export * from './DividerShowcase';
 export * from './SwitchShowcase';
 export * from './TagShowcase';
 export * from './BadgeShowcase';
+export * from './SocialLinksShowcase';

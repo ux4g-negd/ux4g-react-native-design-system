@@ -128,13 +128,13 @@ export const Ux4gTag: React.FC<Ux4gTagProps> = ({
     if (colorScheme === 'neutral') {
       baseColor = isDark ? UX4GColors.neutral300 : UX4GColors.neutral700;
     } else if (colorScheme === 'success') {
-      baseColor = colors.success ?? (isDark ? UX4GColors.success400 : UX4GColors.success600);
+      baseColor = colors.success ?? (isDark ? UX4GColors.green400 : UX4GColors.green600);
     } else if (colorScheme === 'warning') {
-      baseColor = colors.warning ?? (isDark ? UX4GColors.warning400 : UX4GColors.warning600);
+      baseColor = colors.warning ?? (isDark ? UX4GColors.orange400 : UX4GColors.orange600);
     } else if (colorScheme === 'error') {
-      baseColor = colors.error ?? (isDark ? UX4GColors.error400 : UX4GColors.error600);
+      baseColor = colors.error ?? (isDark ? UX4GColors.red400 : UX4GColors.red600);
     } else if (colorScheme === 'info') {
-      baseColor = colors.info ?? (isDark ? UX4GColors.info400 : UX4GColors.info600);
+      baseColor = colors.info ?? (isDark ? UX4GColors.cyan400 : UX4GColors.cyan600);
     }
 
     let bg = 'transparent';

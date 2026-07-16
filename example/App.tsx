@@ -20,6 +20,7 @@ import { DividerShowcase } from '../src/showcase/DividerShowcase';
 import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
+import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
 import { Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
@@ -30,7 +31,8 @@ type ActiveTab =
   | 'dividers'
   | 'switches'
   | 'tags'
-  | 'badges';
+  | 'badges'
+  | 'social-links';
 
 const ShowcaseHub: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('badges');
@@ -270,6 +272,33 @@ const ShowcaseHub: React.FC = () => {
               🔴 Badges
             </Text>
           </Pressable>
+
+          <Pressable
+            onPress={() => setActiveTab('social-links')}
+            style={[
+              styles.tabItem,
+              activeTab === 'social-links' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'social-links'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                      ? '#A1A1AA'
+                      : '#52525B',
+                },
+              ]}
+            >
+              🔗 Social
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -289,8 +318,10 @@ const ShowcaseHub: React.FC = () => {
           <SwitchShowcase />
         ) : activeTab === 'tags' ? (
           <TagShowcase />
-        ) : (
+        ) : activeTab === 'badges' ? (
           <BadgeShowcase />
+        ) : (
+          <SocialLinksShowcase />
         )}
       </View>
     </SafeAreaView>
