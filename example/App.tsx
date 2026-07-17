@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -38,10 +38,11 @@ type ActiveTab =
   | 'dropdown'
   | 'input-field'
   | 'search-field'
-  | 'text-area';
+  | 'text-area'
+  | 'accordion';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('text-area');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('accordion');
   const theme = useUx4gTheme();
 
   return (
@@ -464,6 +465,32 @@ const ShowcaseHub: React.FC = () => {
               📄 Text Area
             </Text>
           </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('accordion')}
+            style={[
+              styles.tabItem,
+              activeTab === 'accordion' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'accordion'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              🪗 Accordion
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -497,6 +524,8 @@ const ShowcaseHub: React.FC = () => {
           <SearchFieldShowcase />
         ) : activeTab === 'text-area' ? (
           <TextAreaShowcase />
+        ) : activeTab === 'accordion' ? (
+          <AccordionShowcase />
         ) : (
           <SocialLinksShowcase />
         )}

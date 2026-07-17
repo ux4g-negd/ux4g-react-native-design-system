@@ -13,3 +13,4 @@ export * from './DropdownShowcase';
 export * from './InputFieldShowcase';
 export * from './SearchFieldShowcase';
 export * from './TextAreaShowcase';
+export * from './AccordionShowcase';
