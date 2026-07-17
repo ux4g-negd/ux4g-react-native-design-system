@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -37,10 +37,11 @@ type ActiveTab =
   | 'chips'
   | 'dropdown'
   | 'input-field'
-  | 'search-field';
+  | 'search-field'
+  | 'text-area';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('search-field');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('text-area');
   const theme = useUx4gTheme();
 
   return (
@@ -437,6 +438,32 @@ const ShowcaseHub: React.FC = () => {
               🔍 Search Field
             </Text>
           </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('text-area')}
+            style={[
+              styles.tabItem,
+              activeTab === 'text-area' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'text-area'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              📄 Text Area
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -468,6 +495,8 @@ const ShowcaseHub: React.FC = () => {
           <InputFieldShowcase />
         ) : activeTab === 'search-field' ? (
           <SearchFieldShowcase />
+        ) : activeTab === 'text-area' ? (
+          <TextAreaShowcase />
         ) : (
           <SocialLinksShowcase />
         )}

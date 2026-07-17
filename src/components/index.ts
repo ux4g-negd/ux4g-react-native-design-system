@@ -12,3 +12,4 @@ export * from './chips';
 export * from './dropdown';
 export * from './input-field';
 export * from './search-field';
+export * from './text-area';
