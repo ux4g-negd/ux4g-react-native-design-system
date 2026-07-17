@@ -11,3 +11,4 @@ export * from './AvatarShowcase';
 export * from './ChipsShowcase';
 export * from './DropdownShowcase';
 export * from './InputFieldShowcase';
+export * from './SearchFieldShowcase';
