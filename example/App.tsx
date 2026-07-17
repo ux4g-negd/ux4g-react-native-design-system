@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -33,10 +33,12 @@ type ActiveTab =
   | 'tags'
   | 'badges'
   | 'social-links'
-  | 'avatar';
+  | 'avatar'
+  | 'chips'
+  | 'dropdown';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('avatar');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('dropdown');
   const theme = useUx4gTheme();
 
   return (
@@ -324,7 +326,61 @@ const ShowcaseHub: React.FC = () => {
                 },
               ]}
             >
-              � Avatar
+              👤 Avatar
+            </Text>
+          </Pressable>
+
+          <Pressable
+            onPress={() => setActiveTab('chips')}
+            style={[
+              styles.tabItem,
+              activeTab === 'chips' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'chips'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              🍟 Chips
+            </Text>
+          </Pressable>
+
+          <Pressable
+            onPress={() => setActiveTab('dropdown')}
+            style={[
+              styles.tabItem,
+              activeTab === 'dropdown' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'dropdown'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              🔽 Dropdown
             </Text>
           </Pressable>
         </ScrollView>
@@ -350,6 +406,10 @@ const ShowcaseHub: React.FC = () => {
           <BadgeShowcase />
         ) : activeTab === 'avatar' ? (
           <AvatarShowcase />
+        ) : activeTab === 'chips' ? (
+          <ChipsShowcase />
+        ) : activeTab === 'dropdown' ? (
+          <DropdownShowcase />
         ) : (
           <SocialLinksShowcase />
         )}

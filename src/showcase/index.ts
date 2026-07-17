@@ -8,3 +8,6 @@ export * from './TagShowcase';
 export * from './BadgeShowcase';
 export * from './SocialLinksShowcase';
 export * from './AvatarShowcase';
+export * from './ChipsShowcase';
+export * from './DropdownShowcase';
+
