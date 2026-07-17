@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, ChipsShowcase, DropdownShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -35,10 +35,11 @@ type ActiveTab =
   | 'social-links'
   | 'avatar'
   | 'chips'
-  | 'dropdown';
+  | 'dropdown'
+  | 'input-field';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('dropdown');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('input-field');
   const theme = useUx4gTheme();
 
   return (
@@ -383,6 +384,32 @@ const ShowcaseHub: React.FC = () => {
               🔽 Dropdown
             </Text>
           </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('input-field')}
+            style={[
+              styles.tabItem,
+              activeTab === 'input-field' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'input-field'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              📝 Input Field
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -410,6 +437,8 @@ const ShowcaseHub: React.FC = () => {
           <ChipsShowcase />
         ) : activeTab === 'dropdown' ? (
           <DropdownShowcase />
+        ) : activeTab === 'input-field' ? (
+          <InputFieldShowcase />
         ) : (
           <SocialLinksShowcase />
         )}

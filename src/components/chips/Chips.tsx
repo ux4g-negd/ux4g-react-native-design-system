@@ -137,11 +137,11 @@ export const Ux4gChoiceChip: React.FC<Ux4gChoiceChipProps> = ({
   const defaultRadius = isMedium ? Ux4gRadius.radius8 : Ux4gRadius.radius4;
   const computedRadius = borderRadius ?? defaultRadius;
 
-  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.white;
+  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.neutral0;
   const defaultBorderColor = isDark ? UX4GColors.neutral700 : UX4GColors.neutral200;
 
   const primaryColor = colors.primary ?? UX4GColors.primary600;
-  const onSurfaceColor = colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000');
+  const onSurfaceColor = colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black);
 
   let bgColor: string = defaultBgColor;
   let borderColor: string = defaultBorderColor;
@@ -150,7 +150,7 @@ export const Ux4gChoiceChip: React.FC<Ux4gChoiceChipProps> = ({
   if (!enabled && selected) {
     bgColor = addOpacityToHex(primaryColor, 0.38);
     borderColor = 'transparent';
-    textColor = colors.onPrimary ?? UX4GColors.white;
+    textColor = colors.onPrimary ?? UX4GColors.neutral0;
   } else if (!enabled && !selected) {
     bgColor = addOpacityToHex(onSurfaceColor, 0.04);
     borderColor = addOpacityToHex(onSurfaceColor, 0.2);
@@ -158,7 +158,7 @@ export const Ux4gChoiceChip: React.FC<Ux4gChoiceChipProps> = ({
   } else if (selected) {
     bgColor = primaryColor;
     borderColor = primaryColor;
-    textColor = colors.onPrimary ?? UX4GColors.white;
+    textColor = colors.onPrimary ?? UX4GColors.neutral0;
   }
 
   return (
@@ -272,11 +272,11 @@ export const Ux4gFilterChip: React.FC<Ux4gFilterChipProps> = ({
   const height = isMedium ? 32 : 28;
   const typoStyle = isMedium ? typography.lM_default : typography.lS_default;
 
-  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.white;
+  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.neutral0;
   const defaultBorderColor = isDark ? UX4GColors.neutral700 : UX4GColors.neutral200;
 
   const primaryColor = colors.primary ?? UX4GColors.primary600;
-  const onSurfaceColor = colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000');
+  const onSurfaceColor = colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black);
 
   let bgColor: string = defaultBgColor;
   let borderColor: string = defaultBorderColor;
@@ -386,9 +386,9 @@ export const Ux4gInputChip: React.FC<Ux4gInputChipProps> = ({
   const horizontalPadding = size === 'xs' ? 6 : 8;
   const iconSize = size === 'xs' ? 12 : 16;
 
-  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.white;
+  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.neutral0;
   const defaultBorderColor = isDark ? UX4GColors.neutral700 : UX4GColors.neutral200;
-  const onSurfaceColor = colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000');
+  const onSurfaceColor = colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black);
 
   const bgColor: string = !enabled ? addOpacityToHex(onSurfaceColor, 0.04) : defaultBgColor;
   const borderColor: string = !enabled ? addOpacityToHex(onSurfaceColor, 0.2) : defaultBorderColor;
@@ -617,9 +617,9 @@ export const Ux4gInputChipField: React.FC<Ux4gInputChipFieldProps> = ({
     setModalVisible(false);
   };
 
-  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.white;
+  const defaultBgColor = isDark ? UX4GColors.neutral900 : UX4GColors.neutral0;
   const defaultBorderColor = isDark ? UX4GColors.neutral700 : UX4GColors.neutral200;
-  const onSurfaceColor = colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000');
+  const onSurfaceColor = colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black);
   const primaryColor = colors.primary ?? UX4GColors.primary600;
 
   const bgColor: string = !enabled ? addOpacityToHex(onSurfaceColor, 0.04) : defaultBgColor;

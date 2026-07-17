@@ -200,8 +200,8 @@ export const Ux4gActionDropdown: React.FC<Ux4gActionDropdownProps> = ({
                 left: menuCoords.left,
                 width: menuCoords.width,
                 maxHeight: menuCoords.maxHeight,
-                backgroundColor: colors.surface ?? (isDark ? '#27272A' : '#FFFFFF'),
-                borderColor: isDark ? '#3F3F46' : '#E4E4E7',
+                backgroundColor: colors.surface ?? (isDark ? UX4GColors.neutral800 : UX4GColors.neutral0),
+                borderColor: isDark ? UX4GColors.neutral700 : UX4GColors.neutral200,
               },
             ]}
             onPress={(e) => e.stopPropagation()}
@@ -230,7 +230,7 @@ export const Ux4gActionDropdown: React.FC<Ux4gActionDropdownProps> = ({
                         {
                           color: isSelected
                             ? primaryColor
-                            : colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000'),
+                            : colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black),
                           fontWeight: isSelected ? '600' : '400',
                           flex: 1,
                         },
@@ -245,7 +245,7 @@ export const Ux4gActionDropdown: React.FC<Ux4gActionDropdownProps> = ({
                         color: isSelected
                           ? primaryColor
                           : addOpacityToHex(
-                              colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000'),
+                              colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black),
                               0.6
                             ),
                       })
@@ -441,11 +441,11 @@ export const Ux4gSelectionDropdown: React.FC<Ux4gSelectionDropdownProps> = ({
         ? typography.lL_default
         : typography.lXL_default;
 
-  const defaultBgColor = isDark ? UX4GColors.neutral950 : UX4GColors.white;
+  const defaultBgColor = isDark ? UX4GColors.neutral950 : UX4GColors.neutral0;
   const defaultBorderColor = isDark ? UX4GColors.neutral700 : UX4GColors.neutral200;
 
   const primaryColor = colors.primary ?? UX4GColors.primary600;
-  const onSurfaceColor = colors.onSurface ?? (isDark ? '#FFFFFF' : '#000000');
+  const onSurfaceColor = colors.onSurface ?? (isDark ? UX4GColors.neutral0 : UX4GColors.neutral1000black);
   const errorColor = colors.error ?? UX4GColors.red600;
 
   let borderColor: string = defaultBorderColor;
@@ -607,8 +607,8 @@ export const Ux4gSelectionDropdown: React.FC<Ux4gSelectionDropdownProps> = ({
                 left: menuCoords.left,
                 width: menuCoords.width,
                 maxHeight: menuCoords.maxHeight,
-                backgroundColor: colors.surface ?? (isDark ? '#27272A' : '#FFFFFF'),
-                borderColor: isDark ? '#3F3F46' : '#E4E4E7',
+                backgroundColor: colors.surface ?? (isDark ? UX4GColors.neutral800 : UX4GColors.neutral0),
+                borderColor: isDark ? UX4GColors.neutral700 : UX4GColors.neutral200,
               },
             ]}
             onPress={(e) => e.stopPropagation()}
@@ -619,8 +619,8 @@ export const Ux4gSelectionDropdown: React.FC<Ux4gSelectionDropdownProps> = ({
                   style={[
                     styles.searchInputBox,
                     {
-                      backgroundColor: isDark ? '#18181B' : '#F4F4F5',
-                      borderColor: isDark ? '#3F3F46' : '#E4E4E7',
+                      backgroundColor: isDark ? UX4GColors.neutral900 : UX4GColors.neutral100,
+                      borderColor: isDark ? UX4GColors.neutral700 : UX4GColors.neutral200,
                     },
                   ]}
                 >
@@ -681,7 +681,7 @@ export const Ux4gSelectionDropdown: React.FC<Ux4gSelectionDropdownProps> = ({
                           ]}
                         >
                           {isSelected &&
-                            Ux4gIcons.check({ size: 14, color: UX4GColors.white })}
+                            Ux4gIcons.check({ size: 14, color: UX4GColors.neutral0 })}
                         </View>
                       )}
 
@@ -740,7 +740,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     elevation: 6,
-    shadowColor: '#000000',
+    shadowColor: UX4GColors.neutral1000black,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.18,
     shadowRadius: 8,
@@ -798,7 +798,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     elevation: 8,
-    shadowColor: '#000000',
+    shadowColor: UX4GColors.neutral1000black,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.22,
     shadowRadius: 10,

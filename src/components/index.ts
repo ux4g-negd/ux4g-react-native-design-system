@@ -10,4 +10,4 @@ export * from './social-links';
 export * from './avatar';
 export * from './chips';
 export * from './dropdown';
-
+export * from './input-field';
