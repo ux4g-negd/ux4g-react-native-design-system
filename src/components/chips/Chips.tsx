@@ -16,6 +16,7 @@ import { useUx4gTheme } from '../../theme/Ux4gThemeContext';
 import { UX4GColors } from '../../foundation/colors';
 import { Ux4gSpace, Ux4gRadius } from '../../foundation/dimensions';
 import { Ux4gIcons } from '../../foundation/icons';
+import { Ux4gActionDropdown } from '../dropdown/Dropdown';
 
 /**
  * Helper to compute hex with alpha or rgba color string.
@@ -638,48 +639,62 @@ export const Ux4gInputChipField: React.FC<Ux4gInputChipFieldProps> = ({
         ]}
       >
         {isDropdown ? (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            disabled={!enabled}
-            onPress={() => setModalVisible(true)}
-            style={styles.dropdownTriggerBox}
-          >
-            <Text
-              style={[
-                typography.lM_default,
-                { color: addOpacityToHex(onSurfaceColor, 0.6) },
-              ]}
-            >
-              {placeholder}
-            </Text>
-          </TouchableOpacity>
-        ) : (
-          <TextInput
-            value={value}
-            onChangeText={onValueChange}
-            editable={enabled}
-            placeholder={placeholder}
-            placeholderTextColor={addOpacityToHex(onSurfaceColor, 0.4)}
-            onSubmitEditing={handleAddAction}
-            style={[
-              styles.textInput,
-              typography.lM_default,
-              { color: onSurfaceColor },
-            ]}
+          <Ux4gActionDropdown
+            options={dropdownOptions.map((opt) => ({
+              id: opt,
+              label: opt,
+              showTrailingArrow: false,
+            }))}
+            onOptionClick={(opt) => handleSelectDropdownOption(opt.label)}
+            containerStyle={{ flex: 1 }}
+            triggerBuilder={(toggle) => (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                disabled={!enabled}
+                onPress={toggle}
+                style={[
+                  styles.dropdownTriggerBox,
+                  { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+                ]}
+              >
+                <Text
+                  style={[
+                    typography.lM_default,
+                    { color: addOpacityToHex(onSurfaceColor, 0.6) },
+                  ]}
+                >
+                  {placeholder}
+                </Text>
+                {Ux4gIcons.arrowDropDown({ size: 20, color: onSurfaceColor })}
+              </TouchableOpacity>
+            )}
           />
+        ) : (
+          <>
+            <TextInput
+              value={value}
+              onChangeText={onValueChange}
+              editable={enabled}
+              placeholder={placeholder}
+              placeholderTextColor={addOpacityToHex(onSurfaceColor, 0.4)}
+              onSubmitEditing={handleAddAction}
+              style={[
+                styles.textInput,
+                typography.lM_default,
+                { color: onSurfaceColor },
+              ]}
+            />
+            <TouchableOpacity
+              activeOpacity={0.7}
+              disabled={!enabled}
+              onPress={handleAddAction}
+              hitSlop={6}
+              style={styles.trailingActionBox}
+            >
+              {Ux4gIcons.add({ size: 20, color: primaryColor })}
+            </TouchableOpacity>
+          </>
         )}
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          disabled={!enabled}
-          onPress={handleAddAction}
-          hitSlop={6}
-          style={styles.trailingActionBox}
-        >
-          {isDropdown
-            ? Ux4gIcons.arrowDropDown({ size: 20, color: onSurfaceColor })
-            : Ux4gIcons.add({ size: 20, color: primaryColor })}
-        </TouchableOpacity>
       </View>
 
       {/* Chips Area Below */}
@@ -688,44 +703,6 @@ export const Ux4gInputChipField: React.FC<Ux4gInputChipFieldProps> = ({
           <Ux4gChipGroup chips={chips} arrangement={arrangement} />
         </View>
       )}
-
-      {/* Dropdown Options Modal (when isDropdown = true) */}
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <Pressable
-          style={styles.modalOverlay}
-          onPress={() => setModalVisible(false)}
-        >
-          <View
-            style={[
-              styles.dropdownMenuContainer,
-              {
-                backgroundColor: colors.surface ?? (isDark ? '#27272A' : '#FFFFFF'),
-                borderColor: isDark ? '#3F3F46' : '#E4E4E7',
-              },
-            ]}
-          >
-            <ScrollView style={{ maxHeight: 250 }}>
-              {dropdownOptions.map((opt, idx) => (
-                <TouchableOpacity
-                  key={`opt-${idx}`}
-                  activeOpacity={0.7}
-                  onPress={() => handleSelectDropdownOption(opt)}
-                  style={styles.dropdownOptionItem}
-                >
-                  <Text style={[typography.lM_default, { color: onSurfaceColor }]}>
-                    {opt}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-          </View>
-        </Pressable>
-      </Modal>
     </View>
   );
 };
