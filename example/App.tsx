@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, AadhaarInputFieldShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -39,10 +39,11 @@ type ActiveTab =
   | 'input-field'
   | 'search-field'
   | 'text-area'
-  | 'accordion';
+  | 'accordion'
+  | 'aadhaar-input-field';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('accordion');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('aadhaar-input-field');
   const theme = useUx4gTheme();
 
   return (
@@ -491,6 +492,32 @@ const ShowcaseHub: React.FC = () => {
               🪗 Accordion
             </Text>
           </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('aadhaar-input-field')}
+            style={[
+              styles.tabItem,
+              activeTab === 'aadhaar-input-field' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'aadhaar-input-field'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              🆔 Aadhaar Input
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -526,6 +553,8 @@ const ShowcaseHub: React.FC = () => {
           <TextAreaShowcase />
         ) : activeTab === 'accordion' ? (
           <AccordionShowcase />
+        ) : activeTab === 'aadhaar-input-field' ? (
+          <AadhaarInputFieldShowcase />
         ) : (
           <SocialLinksShowcase />
         )}

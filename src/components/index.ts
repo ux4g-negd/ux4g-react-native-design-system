@@ -14,3 +14,4 @@ export * from './input-field';
 export * from './search-field';
 export * from './text-area';
 export * from './accordion';
+export * from './aadhaar-input-field';
