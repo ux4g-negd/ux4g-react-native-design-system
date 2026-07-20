@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, AadhaarInputFieldShowcase, Ux4gThemeProvider, useUx4gTheme } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, AadhaarInputFieldShowcase, PanInputFieldShowcase, ToastShowcase, Ux4gThemeProvider, useUx4gTheme, Ux4gToastProvider } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -40,10 +40,12 @@ type ActiveTab =
   | 'search-field'
   | 'text-area'
   | 'accordion'
-  | 'aadhaar-input-field';
+  | 'aadhaar-input-field'
+  | 'pan-input-field'
+  | 'toast';
 
 const ShowcaseHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('aadhaar-input-field');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('toast');
   const theme = useUx4gTheme();
 
   return (
@@ -518,6 +520,58 @@ const ShowcaseHub: React.FC = () => {
               🆔 Aadhaar Input
             </Text>
           </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('pan-input-field')}
+            style={[
+              styles.tabItem,
+              activeTab === 'pan-input-field' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'pan-input-field'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              💳 PAN Input
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('toast')}
+            style={[
+              styles.tabItem,
+              activeTab === 'toast' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'toast'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              🍞 Toast
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -555,6 +609,10 @@ const ShowcaseHub: React.FC = () => {
           <AccordionShowcase />
         ) : activeTab === 'aadhaar-input-field' ? (
           <AadhaarInputFieldShowcase />
+        ) : activeTab === 'pan-input-field' ? (
+          <PanInputFieldShowcase />
+        ) : activeTab === 'toast' ? (
+          <ToastShowcase />
         ) : (
           <SocialLinksShowcase />
         )}
@@ -566,7 +624,9 @@ const ShowcaseHub: React.FC = () => {
 export default function App(): React.JSX.Element {
   return (
     <Ux4gThemeProvider>
-      <ShowcaseHub />
+      <Ux4gToastProvider isBottom={true}>
+        <ShowcaseHub />
+      </Ux4gToastProvider>
     </Ux4gThemeProvider>
   );
 }
