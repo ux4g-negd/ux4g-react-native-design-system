@@ -21,7 +21,7 @@ import { SwitchShowcase } from '../src/showcase/SwitchShowcase';
 import { TagShowcase } from '../src/showcase/TagShowcase';
 import { BadgeShowcase } from '../src/showcase/BadgeShowcase';
 import { SocialLinksShowcase } from '../src/showcase/SocialLinksShowcase';
-import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, AadhaarInputFieldShowcase, PanInputFieldShowcase, ToastShowcase, Ux4gThemeProvider, useUx4gTheme, Ux4gToastProvider } from '../src/index';
+import { AvatarShowcase, ChipsShowcase, DropdownShowcase, InputFieldShowcase, SearchFieldShowcase, TextAreaShowcase, AccordionShowcase, AadhaarInputFieldShowcase, PanInputFieldShowcase, ToastShowcase, ModalShowcase, Ux4gThemeProvider, useUx4gTheme, Ux4gToastProvider } from '../src/index';
 
 type ActiveTab =
   | 'spinners'
@@ -42,7 +42,8 @@ type ActiveTab =
   | 'accordion'
   | 'aadhaar-input-field'
   | 'pan-input-field'
-  | 'toast';
+  | 'toast'
+  | 'modal';
 
 const ShowcaseHub: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('toast');
@@ -572,6 +573,32 @@ const ShowcaseHub: React.FC = () => {
               🍞 Toast
             </Text>
           </Pressable>
+          <Pressable
+            onPress={() => setActiveTab('modal')}
+            style={[
+              styles.tabItem,
+              activeTab === 'modal' && [
+                styles.activeTabItem,
+                { backgroundColor: theme.colors.primary },
+              ],
+            ]}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                {
+                  color:
+                    activeTab === 'modal'
+                      ? theme.colors.onPrimary
+                      : theme.isDark
+                        ? '#A1A1AA'
+                        : '#52525B',
+                },
+              ]}
+            >
+              🪟 Modal
+            </Text>
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -613,6 +640,8 @@ const ShowcaseHub: React.FC = () => {
           <PanInputFieldShowcase />
         ) : activeTab === 'toast' ? (
           <ToastShowcase />
+        ) : activeTab === 'modal' ? (
+          <ModalShowcase />
         ) : (
           <SocialLinksShowcase />
         )}

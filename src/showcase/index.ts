@@ -17,3 +17,4 @@ export * from './AccordionShowcase';
 export * from './AadhaarInputFieldShowcase';
 export * from './PanInputFieldShowcase';
 export * from './ToastShowcase';
+export * from './ModalShowcase';
