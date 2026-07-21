@@ -18,3 +18,4 @@ export * from './aadhaar-input-field';
 export * from './pan-input-field';
 export * from './toast';
 export * from './modal';
+export * from './card';

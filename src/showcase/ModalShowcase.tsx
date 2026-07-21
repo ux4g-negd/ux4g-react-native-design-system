@@ -221,7 +221,11 @@ export const ModalShowcase: React.FC = () => {
         headerImageUrl="https://picsum.photos/seed/promo2/600/300"
         headerImageStyle="fullBleed"
         leadingItem="icon"
-        leadingIcon={Ux4gIcons.success({ size: 24, color: theme.colors.onSurface })}
+        leadingIcon={
+          <View style={{ width: 24, height: 24, borderWidth: 1.5, borderColor: theme.colors.onSurface, borderRadius: 4, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '45deg' }] }}>
+            <View style={{ width: 8, height: 8, borderWidth: 1.5, borderColor: theme.colors.onSurface, borderRadius: 2, transform: [{ rotate: '-45deg' }] }} />
+          </View>
+        }
         alignment="centered"
         headerTitle="Header"
         showDescription={true}
@@ -244,7 +248,11 @@ export const ModalShowcase: React.FC = () => {
         headerImageContent={gradientPlaceholder}
         headerImageStyle="fullBleed"
         leadingItem="icon"
-        leadingIcon={Ux4gIcons.warning({ size: 24, color: '#D32F2F' })}
+        leadingIcon={
+          <View style={{ width: 24, height: 24, borderWidth: 1.5, borderColor: '#D32F2F', borderRadius: 4, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '45deg' }] }}>
+            <View style={{ width: 8, height: 8, borderWidth: 1.5, borderColor: '#D32F2F', borderRadius: 2, transform: [{ rotate: '-45deg' }] }} />
+          </View>
+        }
         alignment="centered"
         headerTitle="Header"
         showDescription={true}

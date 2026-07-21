@@ -222,14 +222,14 @@ export const Ux4gModal: React.FC<Ux4gModalProps> = ({
         >
           <View
             style={{
-              flexDirection: 'row',
+              flexDirection: isCentered ? 'column' : 'row',
               alignItems: 'center',
               justifyContent: isCentered ? 'center' : 'flex-start',
               width: '100%',
             }}
           >
             {leadingItem === 'icon' && (
-              <View style={{ marginRight: theme.space.space8 }}>
+              <View style={{ marginRight: isCentered ? 0 : theme.space.space8, marginBottom: isCentered ? theme.space.space8 : 0 }}>
                 {leadingIcon ?? Ux4gIcons.info({ size: 24, color: leadingIconTint ?? onSurface })}
               </View>
             )}
@@ -239,7 +239,7 @@ export const Ux4gModal: React.FC<Ux4gModalProps> = ({
               </View>
             )}
             {leadingItem === 'image' && (leadingImageContent || leadingImageUrl) && (
-              <View style={{ marginRight: theme.space.space8 }}>
+              <View style={{ marginRight: isCentered ? 0 : theme.space.space8, marginBottom: isCentered ? theme.space.space8 : 0 }}>
                 {renderLeadingImage()}
               </View>
             )}
@@ -248,7 +248,7 @@ export const Ux4gModal: React.FC<Ux4gModalProps> = ({
                 theme.typography.tS_strong,
                 {
                   color: onSurface,
-                  flex: 1,
+                  flex: isCentered ? 0 : 1,
                   textAlign: isCentered ? 'center' : 'left',
                 },
               ]}
@@ -456,10 +456,10 @@ export const Ux4gModal: React.FC<Ux4gModalProps> = ({
                   onPress={handleDismiss}
                   style={[
                     styles.closeButtonImageMode,
-                    { backgroundColor: getHexWithAlpha(onSurface, 'A6') }, // 0.65 alpha
+                    { backgroundColor: getHexWithAlpha(surface, 'CC') }, // 80% opacity surface
                   ]}
                 >
-                  {Ux4gIcons.close({ size: 16, color: surface })}
+                  {Ux4gIcons.close({ size: 16, color: theme.colors.primary })}
                 </Pressable>
               ) : (
                 <Pressable
